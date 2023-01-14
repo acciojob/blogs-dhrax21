@@ -29,12 +29,12 @@ public class Blog{
         @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL)
         private List<Image> imageList;
 
-        public Blog(int id, String title, String content, Date pubDate) {
-                this.id = id;
-                this.title = title;
-                this.content = content;
-                this.pubDate = pubDate;
-        }
+//        public Blog(int id, String title, String content, Date pubDate) {
+//                this.id = id;
+//                this.title = title;
+//                this.content = content;
+//                this.pubDate = pubDate;
+//        }
 
         public User getUser() {
                 return user;
@@ -87,5 +87,9 @@ public class Blog{
 
         public void setPubDate(Date pubDate) {
                 this.pubDate = pubDate;
+        }
+
+        public Blog(){
+                
         }
 }

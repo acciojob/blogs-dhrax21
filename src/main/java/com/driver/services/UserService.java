@@ -31,8 +31,8 @@ public class UserService {
 
     public void updateUser(User user){
 
-        User currUser=userRepository3.findByUserName(user.getUserName());
-        currUser.setUserName(user.getUserName());
+        User currUser=userRepository3.findByUsername(user.getUsername());
+        currUser.setUsername(user.getUsername());
         currUser.setFirstName(user.getFirstName());
         currUser.setLastName(user.getLastName());
         currUser.setPassword(user.getPassword());
@@ -41,6 +41,6 @@ public class UserService {
     }
 
     public User findUserByUsername(String username){
-        return userRepository3.findByUserName(username);
+        return userRepository3.findByUsername(username);
     }
 }
