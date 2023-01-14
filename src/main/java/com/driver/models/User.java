@@ -1,37 +1,33 @@
+
 package com.driver.models;
+
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Users")
-public class User{
-
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true,nullable = false)
+    public List<Blog> getBlogList() {
+        return blogList;
+    }
+
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
+    }
+
+    @Column(unique = true)
     private String username;
 
     private String password;
 
-    private String firstName;
+    private String firstname;
 
-    private String lastName;
-
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Blog> blogList;
-
-    public User(String userName, String password, String firstName, String lastName) {
-        this.username = userName;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public User() {
-    }
+    private String lastname;
 
     public int getId() {
         return id;
@@ -57,27 +53,31 @@ public class User{
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public List<Blog> getBlogList() {
-        return blogList;
+    public User() {
     }
 
-    public void setBlogList(List<Blog> blogList) {
-        this.blogList = blogList;
+    public User( String username, String password, String firstname, String lastname) {
+        this.username = username;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Blog> blogList;
 }
